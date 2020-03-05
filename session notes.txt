@@ -1,0 +1,164 @@
+Selenium -
+
+Automation tool
+- type of testing can be done - functional testing - testing the behavior of the application ( functional characteristics) 
+                              - Comptability testing - testing the appln with diff platforms, O/s , browsers etc 
+
+                             -regression testing - 
+
+     * when defect is fixed
+     * new feature added 
+
+it is testing the unchanged areas to check the impact / change doesnt affect the existing ones 
+
+
+scenario -
+
+IRCTC - cancel module
+ defect - req - 
+
+PNR number - Passed - regression testing 
+ticket number - failed ( defect)---> fixed---> retesting -Passed
+
+
+Selenium - Open source tool
+           using multiple programming/scripting language 
+
+
+Types
+1. selenium IDE (GUI)
+Adv  - recording and playback 
+Disadv- few browsers 
+      - HTML /javascript 
+ 
+
+
+2. selenium RC ( jar file) ---> editor ( eclipse)
+
+ test the script---> junit ( framework - test the code functionality) / TestNg ( next generation)
+
+Adv-
+1.have any programming / scripting language used 
+2.it supports most of the browsers 
+3.datadriven testing - single functionality is tested  with multiple values 
+4.database validation - testing the backend of the appln 
+
+
+Disadv-
+1.selenium RC - server 
+
+script(editor)---> test---> server---->appln(browser)
+
+no direct communication b/w tester / appln 
+
+  
+ 
+3. selenium webdriver
+jar file
+
+adv-
+1.direct communication b/w script ---> appln 
+2.have any programming / scripting language used 
+3.it supports most of the browsers 
+4.datadriven testing - single functionality is tested  with multiple values 
+5.database validation - testing the backend of the appln 
+
+
+
+4.selenium grid-
+
+combination 
+
+testing the script in different platforms at the same time 
+
+script-java-- windows 7 --- firefox
+script-java-- windows xp--- chrome
+script--java -mac os --- safari 
+
+
+
+annotations - 
+@Test - (mandatory) test the functionality
+@before - before i want to test what action need to be performed 
+@after  -after testing 
+Assertequals - test the script with ER=AR 
+
+
+
+
+
+
+scripts can be generated two ways
+ 1. recording - tester ---> new ---> no knowledge in script---> instruct the tool---> tool will generate the scripts 
+ 2. descriptive programming ---> tester will write scripts to test the appln 
+
+
+script ( java)--- jar file ( selenium webdriver)
+test in the browser( chrome)---> server( exe file)
+junit lib file ---> in built-in ( eclipse)
+
+
+locator type
+1.id
+2.name
+3.css - 
+  - tagname("attribute='value')
+
+4.xpath - identify the element using its path and properties 
+ - abs - from root  /html
+ - rel - relvant to the path we can 
+
+   tagname[@attribute='value'][index]
+   
+advantages - if more than one element having same property i can use the following code-
+1. text box 1
+   text box 2 
+
+  "input[name='Gender'][2]"
+
+2. txt box id="user1" - if property of the element is changing dynamically over a period of time - following code 
+
+ input[id=user1]
+
+ //input[@id='user1']
+
+  id=user2 (after  sometime)
+  id =user3 ( dynamically changing)
+
+//tagname[contains(@attribute,constant_value)]
+
+//input[contains(@id,user)]
+
+3. textbox - id="      user      " - spaces value of the attribute 
+
+remove spaces 
+ //html tagname[normalize-space(@attribute,"value")]
+
+//input[normalize-space(@id,"user")]
+
+4. text box id=user ,name=textbox1 - we can user more than one property for a single element 
+
+//tagname[@attribut=value and @attribute=value]
+//input[@id="user" and name="textbox1"]
+
+
+5.link  <a>
+ -linktext - exact text
+ -partiallinktext - partial text of the link 
+
+link=text of link
+
+
+
+
+
+6.dom
+7.classname
+8.tagname
+
+
+
+
+
+
+

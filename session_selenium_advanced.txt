@@ -1,0 +1,669 @@
+Selenium Advanced 
+
+Features
+1.It can test web based application
+2. functional testing
+3. regression testing
+4.compatability testing - testing the appln using diff O/s, diff browsers 
+5. open source tool
+6.Seleniumhq.org
+7.ThoughtWorks & Google(webdriver)
+
+Suite of products
+1. Selenium IDe
+2. Selenium RC
+3.Selenium Webdriver
+4. Selenium grid
+
+eg-
+Windows- os - firefox 
+Window-os  - Chrome
+Mac os- safari
+
+
+Junit -
+
+unit testing - test the code - to check whether the functionality of the code (logic)
+
+Java program - Junit (framework)- built- in - eclipse
+
+Annotations
+1.@before
+2.@after
+3.@test
+4.@beforemethod
+5.@aftermethod
+6.@ignore
+7.@runwith
+
+
+Result - Color representation Pass- green. fail- Red, warning-amber
+
+
+- TestNg-
+
+Next generation 
+
+Advantages
+1.report generation 
+2.more annotations
+3.datadriven testing
+  - testing the appln with different values or inputs
+ single functionality- My atos syntel login            - employee of Atos syntel
+ My atos syntel login                                      23,000
+  single script ---------------n of values 
+4.internal data(inside the script) available - @parameters @ dataproviders - datadriven testing 
+
+5. external data ( excel sheet)
+
+expected results=actual results - assert(check ER=AR) stts 
+
+1.assert.assertEquals
+
+
+- functionality of the code
+
+script
+1.which element -attribute of the element- Source code- Inspector
+2.what action need to be performed on the element - (textbox - enter values, button-click(methods)
+3.if value need to be passed- what is the value 
+
+
+locators (identifying the element)
+
+1. id
+2.name
+3.css
+   tagname[attribute='value']
+4.xpath rel -//tagname[@attribute='value'][index]
+5.dom - getElementByiD,GetelementByIndex,GetElekemntBytagname,getElementbyname
+6.link
+7.classname
+8.tagname
+
+
+test kpn reg functionality
+
+script
+
+1. open the browser
+- set the path for driver server
+
+package example1;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.Test;
+
+public class NewTest {
+  @Test
+  public void f() {
+	  System.setProperty("webdriver.chrome.driver","\\172.26.100.9\\Training-Share$\\Faculty\\Karthika\\Selenium\\Selenium - Training sw\\chromedriver.exe");
+	  WebDriver d1=new ChromeDriver();
+ 
+
+2.open the url of the appln-
+
+ d1.get("http://kpntravels.in/frmUserRegistration.aspx");
+
+3.test the  elements-
+
+ d1.findElement(By.id("WebContent_txtUserId")).sendKeys("karthika");
+
+  d1.findElement(By.name("ctl00$WebContent$txtMail")).sendKeys("karthikaa20@gmail.com");
+	  d1.findElement(By.cssSelector("input[type='password']")).sendKeys("fdsfhsfhsgf");
+
+
+
+
+
+diff b/w findElement and findElements-
+=====================================
+
+ List <WebElement> List=d1.findElements(By.tagName("a"));
+	  System.out.println("links count are"+ List.size());
+	  
+	  for (WebElement li:List) {
+		  System.out.println(li.getText());
+
+
+
+@DataProviders-
+==============
+
+package example1;
+
+import org.testng.Assert;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
+public class CalculatorTest {
+	Calculator cal=new Calculator();
+
+  @Test(dataProvider="caladd")
+  public void add1(int actual_value,int a,int b) {
+	  Assert.assertEquals(actual_value,cal.add1(a, b));
+   
+  }
+
+  @Test
+  public void mul1() {
+	  Assert.assertEquals(20,cal.mul1(4, 5));
+    
+  }
+  
+  @DataProvider(name="caladd")
+  public Object[][]getData(){
+	  Object[][]table=new Object[][] {
+		  {10,5,5},
+		  {14,7,7},
+		  {9,5,4}
+	  };
+		  
+		  return table;
+	 
+	  }
+  
+  
+  {
+	  
+  }
+}
+
+===================================================================================
+
+
+@Parameters
+
+xml file-
+
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="testsuite1">
+<test name="f" >
+<parameter name="User_Name" value="Karthika"  />
+<class name="NewTest" >
+</class>
+</test>
+</suite>
+
+script-
+
+package example1;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.Parameters;
+import org.testng.annotations.Test;
+
+public class NewTest {
+  @Test@Parameters("User_Name")
+  public void f(String name) {
+	  System.setProperty("webdriver.chrome.driver","C:\\Users\\KS5047809\\Desktop\\chromedriver.exe");
+	  WebDriver d1=new ChromeDriver();
+	  d1.get("http://kpntravels.in/frmUserRegistration.aspx");
+	  d1.findElement(By.id("WebContent_txtUserId")).sendKeys(name);
+	  d1.findElement(By.name("ctl00$WebContent$txtMail")).sendKeys("karthikaa20@gmail.com");
+	  d1.findElement(By.cssSelector("input[type='password']")).sendKeys("fdsfhsfhsgf");
+	  d1.findElement(By.id("WebContent_txtConfirmPassword")).sendKeys("jjgjgjg");
+	  
+	  
+	  List <WebElement> List=d1.findElements(By.tagName("a"));
+	  System.out.println("links count are"+ List.size());
+	  
+	  for (WebElement li:List) {
+		  System.out.println(li.getText());
+		  
+	  }
+	  
+	  
+	  
+	  
+	  
+	  
+  }
+}
+==================================================================================
+
+Day-2
+
+Datadriven testing - data - external
+
+parameterization- passing multiple value to a single script
+
+"n" of values ------ single functionality
+
+
+-jxl jar file
+-apache poi library file
+
+
+
+eg-
+
+package example1;
+
+import java.io.File;
+import java.io.IOException;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.Test;
+
+import jxl.Sheet;
+import jxl.Workbook;
+import jxl.read.biff.BiffException;
+
+
+public class Datadriven {
+  @Test
+  public void f() throws IOException,BiffException{
+	  System.setProperty("webdriver.chrome.driver","C:\\Users\\KS5047809\\Desktop\\chromedriver.exe");
+	  WebDriver d1=new ChromeDriver();
+	
+	  Workbook w1=Workbook.getWorkbook(new File("C:\\Users\\KS5047809\\Desktop\\data4.xls"));
+	  Sheet s1=w1.getSheet(0);
+	  
+	  for (int i=1;i<s1.getRows();i++) {
+		  d1.get("https://hrms.myatos-syntel.net/psp/syhrprod/EMPLOYEE/HRMS/h/?tab=DEFAULT&cmd=login&errorCode=106&languageCd=ENG");
+		  
+		  String username=s1.getCell(0,i).getContents();
+		  String password=s1.getCell(1, i).getContents();
+		  
+		  d1.findElement(By.id("userid")).sendKeys(username);
+		  d1.findElement(By.xpath("//input[@type='password']")).sendKeys(password);
+		  d1.findElement(By.name("Submit")).click();
+		  
+		  
+	  }
+	  
+	  
+  }
+}
+
+
+-----------------------------------------------------------------------------------
+
+Screenshot -
+===========
+
+package example;
+
+import static org.junit.Assert.*;
+
+import java.io.File;
+import java.io.IOException;
+
+import org.apache.commons.io.FileUtils;
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Test1 {
+
+	@Test
+	public void test() throws IOException {
+	System.setProperty("webdriver.chrome.driver","\\\\172.26.100.9\\Training-Share$\\Faculty\\Karthika\\Selenium\\Selenium - Training sw\\chromedriver.exe");
+	WebDriver d1=new ChromeDriver();
+	d1.get("https://www.myatos-syntel.net");
+	d1.findElement(By.id("_com_liferay_login_web_portlet_LoginPortlet_kpoUserName")).sendKeys("KS4538549385");
+	d1.findElement(By.name("_com_liferay_login_web_portlet_LoginPortlet_password")).sendKeys("dfdfd");
+	d1.findElement(By.xpath("//button[@type='submit']")).click();
+	//d1.findElement(By.linkText("Forgot/Reset KPO Password")).click();
+	File source=((TakesScreenshot)d1).getScreenshotAs(OutputType.FILE);
+	FileUtils.copyFile(source,new File("D:\\New folder\\picture.jpg"));
+	
+	
+	
+	
+	}
+
+}
+
+
+jar file- multiscreenshot 
+
+MultiScreenshot  m1=new MultiScreenshot("D:\\\\New folder") ;
+	multiScreens.multiScreenshot(d1);
+	
+	
+-----------------------------------------------------------------------------------
+
+AutoIT- third party tool- open source tool  - handling the window interface in web based appln 
+
+Handle interface of windows in web based application.
+
+script in AutoIt-
+
+WinActive("Open")
+send("C:\Users\KS5047809\Desktop\Coverage.docx")
+send ("{TAB}")
+send ("{TAB}")
+send ("{ENTER}")
+
+save---> .au3 ---> compile the script
+
+
+in eclipse--->
+
+
+
+package example1;
+
+import java.io.IOException;
+import java.util.concurrent.TimeUnit;
+
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+
+public class AutoIT {
+  @Test
+  public void f() throws IOException {
+	  System.setProperty("webdriver.chrome.driver","C:\\Users\\KS5047809\\Desktop\\chromedriver.exe");
+	  WebDriver d1=new ChromeDriver();
+
+	  d1.get("https://www.wordtopdf.com/en/");
+	  d1.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
+	  d1.findElement(By.id("file-uploader")).click();
+	  Runtime.getRuntime().exec("C:\\Users\\KS5047809\\Desktop\\all\\window.exe");
+	  d1.findElement(By.name("email")).sendKeys("kkhjhjgjg@bcjj.com");
+	  
+  }
+}
+
+===================================================================================
+Day-3
+=====
+
+What is cookie?
+
+Piece of information storing in the backend in the form of text file---> storing the users interaction on the browser
+
+information will contain
+- users personalized data
+- communicate b/w different web pages
+
+
+three things
+-name of the cookie
+-cookie lifetime
+-value . (randomly generated unique number)
+
+how cookie handled in selenium ?
+
+- eg if we are working with amazon appln
+
+- login---> search--> adding to the cart---> view ---> payment---> confirmation---> track
+
+if cookie is not stored 
+
+login---> search
+
+login---> adding to  the cart
+
+login--->view 
+
+login--->payment
+
+login--->confirmation
+
+- login---> track
+
+
+commands -
+
+1.addcookie(cookie )- driver.manage().addcookie(cookie)
+
+2.deleteCookie(cookie)-driver.manage().deleteCookie(Cookie cookie)
+
+3.GetCookies()
+
+4.deleteAllCookies()
+
+eg-
+
+package example1;
+
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
+import org.openqa.selenium.Cookie;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.Test;
+
+public class Cookies {
+  @Test
+  public void f() throws IOException {
+	  System.setProperty("webdriver.chrome.driver","C:\\Users\\KS5047809\\Desktop\\chromedriver.exe");
+	  WebDriver d1=new ChromeDriver();
+	  d1.get("http://demo.guru99.com/test/cookie/selenium_aut.php");
+	  d1.findElement(By.name("username")).sendKeys("KS5047809");
+	  d1.findElement(By.name("password")).sendKeys("July2019$");
+	  d1.findElement(By.name("submit")).click();
+	  File f1=new File("D:\\New folder\\cookie2.data");
+	 try{
+		 f1.delete();
+	 
+	 f1.createNewFile();
+	 FileWriter fw1=new FileWriter(f1);
+	 
+	 BufferedWriter bfw1=new BufferedWriter(fw1);
+	 
+	 for (Cookie ck:d1.manage().getCookies())
+	 {
+		 bfw1.write((ck.getName()+";"+ck.getValue()+";"+ck.getExpiry()+";"+ck.getDomain()+";"+ck.isSecure()));
+		 
+		 bfw1.newLine();
+		 
+	 } bfw1.close();
+	 fw1.close();
+	 }
+	 catch(Exception e) {
+		System.out.println(e); 
+	 }
+  }
+}
+
+
+===================================================================================
+
+POM - page object model-
+
+scenario-
+
+amazon appln-
+
+-reg
+-login    attribute -username id=user       password name=password
+-search
+-adding to cart
+-view the cart
+-payment
+-track the order
+
+Advantages
+-readable
+-maintainable
+-reusable
+
+
+without POM
+
+Class A (web elements +method) - test methods
+
+With POM
+Class A (web elements Attributes ) + test methods 
+
+POM?
+
+- Object repository
+
+
+
+
+Class - Attributes of the elements tested in the appln-
+
+package example1;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+public class Atossyntellogin {
+	
+	WebDriver d2;
+  By username=By.id("_com_liferay_login_web_portlet_LoginPortlet_kpoUserName"); 
+  By password=By.name("_com_liferay_login_web_portlet_LoginPortlet_password");
+  By submit=By.xpath("//button[@type='submit']");
+  
+  public Atossyntellogin(WebDriver d2) {
+	  this.d2=d2;
+  }
+
+  public void setUsername(String strusername) {
+	  d2.findElement(username).sendKeys(strusername);
+  }
+  
+  public void setpassword(String strpassword) {
+	  d2.findElement(password).sendKeys(strpassword);
+  
+}
+  public void setlogin() {
+	  d2.findElement(submit).click();
+  
+}
+  public void logintoatossyntel(String strusername,String strpassword) {
+	  this.setUsername(strusername);
+	  this.setpassword(strpassword);
+	  this.setlogin();
+  }
+
+
+}
+
+
+
+Class - Test the login method
+
+package test;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.Test;
+
+import example1.Atossyntellogin;
+
+public class testloginatossyntel {
+	Atossyntellogin objlogin;
+	
+	
+	@Test
+	public void logintest() {
+		System.setProperty("webdriver.chrome.driver","C:\\Users\\KS5047809\\Desktop\\chromedriver.exe");
+		WebDriver d1=new ChromeDriver();
+		d1.get("https://www.myatos-syntel.net");
+		objlogin=new Atossyntellogin (d1);
+		objlogin.logintoatossyntel("KS5047809","July2019$");
+		
+		
+		
+	}
+
+}
+
+-----------------------------------------------------------------------------------
+
+integration others tools-
+
+Maven - used for define the project dependency -
+so that we need not have all the dependency kept in the project explorer
+
+pom.xml---configure all the dependency
+
+-group
+-artifact
+-version
+-scope
+
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>Sel_adv</groupId>
+  <artifactId>Sel_adv</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <dependencies>
+  <dependency>
+  <groupId> junit  </groupId>
+  <artifactId>junit  </artifactId>
+  <version> 4.0</version>
+  <scope> test </scope>
+  </dependency>
+  <dependency>
+  <groupId> org.seleniumhq.selenium  </groupId>
+  <artifactId>selenium-java </artifactId>
+  <version> 2.49.0</version>
+  <scope> test </scope>
+  </dependency>
+  <dependency>
+  <groupId> org.testng  </groupId>
+  <artifactId>testng </artifactId>
+  <version> 6.8 </version>
+  <scope> test </scope>
+  </dependency>
+  </dependencies>
+</project>
+
+
+script-
+package example;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.Test;
+
+public class NewTest {
+  @Test
+  public void f() {
+	  System.setProperty("webdriver.chrome.driver", "C:\\Users\\JS5027377\\Desktop\\chromedriver.exe");
+	  WebDriver d1=new ChromeDriver();
+	  d1.get("https://www.myatos-syntel.net/");
+	  d1.findElement(By.id("_com_liferay_login_web_portlet_LoginPortlet_kpoUserName")).sendKeys("KS5047809");
+	  d1.findElement(By.name("_com_liferay_login_web_portlet_LoginPortlet_password")).sendKeys("July2019$");
+	  d1.findElement(By.xpath("//button[@type='submit']")).click();
+	  
+	  
+  }
+}
+
+==============================================================
+
+Jenkins
+Cucumber  
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,62 @@
+1.create a new maven project  File--->New---> Maven Project
+2.Select a create a simple project
+3.Provide an artifact details ---> group id and artifact id
+   
+4.click finish
+5.select the project which is created and right click on JRE system library ---> select workspace default JRE
+6. in pom.xml provide this-
+  <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>Maven3</groupId>
+  <artifactId>Maven3</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <dependencies>
+  <dependency>
+  <groupId>junit</groupId>
+  <artifactId>junit</artifactId>
+  <version>4.0</version>
+  <scope>test</scope>
+  </dependency>
+  <dependency>
+  <groupId>org.seleniumhq.selenium</groupId>
+  <artifactId>selenium-java</artifactId>
+  <version>2.49.0</version>
+  <scope> test </scope>
+    </dependency>
+    <dependency>
+    <groupId>
+    org.testng
+    </groupId>
+    <artifactId> testng</artifactId>
+    <version> 6.8</version>
+    <scope> test </scope>
+    </dependency>
+    </dependencies>
+</project>
+
+7. under the src/test/java ---> create a package and testng class  
+
+ package name-sample
+ test name --- NewTest
+
+8.package sample;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.Test;
+
+public class NewTest {
+  @Test
+  public void f() {
+	  
+	  System.setProperty("webdriver.chrome.driver","C:\\Users\\JS5027377\\Desktop\\chromedriver.exe");
+	  WebDriver d1=new ChromeDriver();
+	  d1.get("https://my.syntel.in");
+	  
+  }
+}
+
+9.right click on maven3 and select testng and click convert to testng class
+
+10. select testng.xml and click run as ---> testng suite
+

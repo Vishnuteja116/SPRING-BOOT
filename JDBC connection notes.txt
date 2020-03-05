@@ -1,0 +1,141 @@
+ JDBC API
+
+CRUD operation
+
+application				DB(MYSQL,Oracle)
+						TABLES
+.java
+
+Packages
+import java.sql.*;
+
+import javax.sql.*;
+
+Classes
+
+Class  import java.lang.*;
+
+DriverManager
+
+Interfaces
+Connection
+Statement
+PreparedStatement
+CallableStatement
+ResultSet
+DatabaseMetadata
+ResultSetMetadata
+DataSource
+
+Exceptions
+SQLException
+ClassNotFoundException
+
+methods
+execute(DDL (create,alter,drop)):boolean
+executeUpdate(DML (insert,update,delete)):int
+executeQuery(DQL (select)):ResultSet
+
+JARS
+
+Port numbers
+
+1521 oracle
+3306 mysql
+
+types of drivers
+Type I driver bridge JDBCODBCBridge Driver
+II thick driver Native Partly API Java Driver
+III middleware JDBCOCDBCPureJava Driver
+IV thin NativeProtocolPureJava Driver
+
+Statements 3
+
+Statement
+PreparedStatement
+CallableStatement
+
+createStatement():Statement
+prepareStatement():PreparedStatement
+prepareCall():CallableStatement
+
+Metadata
+data about data
+information about data
+DatabaseMetadata
+ResultSetMetadata
+
+Steps:
+1. load the driver class
+Class.forName("oracle.jdbc.driver.OracleDriver");
+Class.forName("com.mysql.jdbc.Driver");
+
+
+2.get connection object
+
+Connection con = DriverManager.getConnection("jdbc:oe:thin:@Oracle02:1521:XE","training1","syntel123");
+
+Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/empdb","root","root");
+
+3.get statement object
+Statement st =con.createStatement();
+4.st.execute("create table employee(eid number,ename varchar2(20)");
+
+st.execute("create table employee(eid int,ename varchar(20)");
+
+st.executeUpdate("insert into employee values(1,'Arun')");
+
+st.executeUpdate("delete from employee where eid=1");
+
+st.executeUpdate("update employee set ename='Ajay' where eid=1");
+
+ResultSet rs = st.executeQuery("select * from employee");
+while(rs.next())
+{
+int empid=rs.getInt(1);
+String empname=rs.getString(2);
+}
+
+PreparedStatement ps=con.prepareStatement("insert into employee values(?,?)");
+ps.setInt(1,10);
+ps.setString(2, "sai");
+ps.executeUpdate();
+
+
+
+ResultSet rs=st.executeQuery("select * from employee");   
+ResultSetMetaData rd=rs.getMetaData();
+	    
+
+
+DatabaseMetaData dm=con.getMetaData();
+
+
+
+
+
+
+
+
+
+		System.out.println("drivername:"+dm.getDriverName());
+		System.out.println("username:"+dm.getUserName());
+		System.out.println("driver version:"+dm.getDriverVersion());
+
+
+
+
+ System.out.println("total number of columns:"+rd.getColumnCount());
+	     System.out.println("name of the column:"+rd.getColumnName(1));
+	     System.out.println("name of the column:"+rd.getColumnName(2));
+	     System.out.println("datatype of the column:"+rd.getColumnTypeName(1));
+	     System.out.println("datatype of the column:"+rd.getColumnTypeName(2));
+	
+
+
+
+
+
+
+
+

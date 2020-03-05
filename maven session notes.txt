@@ -1,0 +1,154 @@
+Maven -
+
+Build tool 
+
+POM-project management model that is based out of page object model
+
+it is usefule for build,dependency,documentation
+
+
+If maven is not there what are the issues encountered-
+
+1.All the required jar files need to be added to the project -
+
+Selenium webdriver,TestNg ,Cucumber ,Structs,hibernate etc
+
+2. creating the right project structure - if proper structure is not available execution will not be proper.
+
+3. build and deploy the project - manually we have set the build and deploy the project so that it performs.
+
+
+Features of Maven-
+
+1. it makes the job easy and simple set for the best project access or creation
+
+
+
+
+POM - Myatos syntel login page elements - attributes & method
+
+username-
+password-
+login button -
+
+attributes , locators
+method  - OR class
+
+action to be performed - Class 
+all the projects can access the OR class for the elements 
+
+
+2.consistent usage for all projects
+
+3.library is going to be stored like a repository
+
+4.instantly new features or new version can be accessed
+
+Maven helps -
+
+1. build
+2. documentation
+3.Release
+4.distribution of projects OR
+
+What do you mean by build tool ?
+
+-generate source tool (auto generated)
+-generate documentation
+-compile source code
+-package compiled code to JAR,WAR or ZIP file
+-install package code to repository 
+
+maven repository
+
+- it is a directory of packaged Jar FILE- pom.XML
+- MAVEN WILL SERACH for dependency which is listed in repositiory 
+
+1. local repository 
+
+
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"           xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+
+<proxies>
+    <proxy>
+      <active>true</active>
+      <protocol>https</protocol>
+      <username>userid</username>
+      <password>password</password>
+      <host>172.26.30.153</host>
+      <port>8080</port>      
+    </proxy>
+  </proxies>
+
+
+</settings>
+
+2.central repository - it will located in web
+
+3.remote repository - it is available in web only.
+
+
+POM.xml
+
+project managment model-
+
+dependency required
+build directory setup
+source directory
+goals
+plugin
+
+
+elements-
+
+1.project - root tag . root element for pom.xml
+
+2.modelversion- 4.0.0
+
+3.groupId - it will specified ID for the project
+
+4. artifactID -  mavenwebapp -project -seleniumtestng - either used or produced by the project name. 
+
+5.version-which version number to be used.
+
+
+
+
+
+other elements which will be provided by the user-
+
+1.packaging - define the type- war file,jar file
+
+2.name - defines the maven project name
+
+3.url - defines the url of the project
+
+4.dependencies - grouping all the depenedency
+
+5.dependency - inside dependencies - dependency - invidually depenedency 
+
+6.scope- defines the scope of project -  compile,runtime,testing 
+
+
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>Selenium</groupId>
+  <artifactId>SeleniumWebDriver</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+
+<packaging> jar </packaging>
+<name> Maven Selenium </name>
+<url > http://maven.apache.org </url>
+<dependencies>
+<dependency>
+<groupId> junit </groupId>
+<artifactId> junit </artifactID>
+<version>4.0</version>
+<scope>test</scope>
+</dependency>
+</depenedencies>
+</project>
+
+  
+</project>

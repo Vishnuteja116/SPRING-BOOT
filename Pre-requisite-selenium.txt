@@ -1,0 +1,19 @@
+S/w req
+
+1. Eclipse - (JDK Path-env )
+2. Plugin TestNg in eclipse - marketplace access 
+
+3. selenium webdriver
+     java ------> jar files
+     browser ---> driver server 
+
+4.-jxl jar file
+-apache poi library file
+
+5.AutoIt s/w
+
+
+6.maven access - maven repository
+
+
+

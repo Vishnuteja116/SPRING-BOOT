@@ -1,0 +1,62 @@
+package com.example;
+
+public class Employee {
+	
+	String id;
+	String name;
+	String DOB;
+	String mail_id;
+	int salary;
+	int mobile_no;
+	
+	public Employee() {
+		this.id=id;
+		this.name=name;
+		this.DOB=DOB;
+		this.mail_id=mail_id;
+		this.salary=salary;
+		this.mobile_no=mobile_no;
+	}
+	
+	public String setId(String id) {
+		return id;
+		
+	}
+	
+	public void getId(String id) {
+		id=id;
+	}
+	
+	public String setName(String name) {
+		return name;
+		
+	}
+	
+	public void getName(String Name) {
+		Name=name;
+	}
+	
+	public int getSalary(int Salary) {
+		return Salary;
+	}
+		
+	public void setSalary(String Salary) {
+		Salary=Salary;
+		
+	}
+	
+	public static void main(String[] args) {
+		Employee obj=new Employee();
+		obj.id="KS5047809";
+		System.out.println(obj.id);
+		
+	}
+	
+	}
+	
+	
+	
+	
+	
+
+

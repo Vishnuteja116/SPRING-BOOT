@@ -1,0 +1,29 @@
+Selenium Advanced  - internal certification 
+
+Session training - Assessment - 70 - clear
+
+1. full attendance 
+2. assignments 
+
+
+learn hours will credited only if you clear the assessment.  
+
+Coverage -
+
+-TestNg
+-Integeration tools- Maven
+                   - Jenkins
+                   - Cucumber
+
+-Handling cookie
+-Framework & types of Framework
+-Datadriven testing
+-Database validation
+-POM
+-Screenshots
+-Exception handling
+-OR
+-Desired Capabilities
+-Log4j & log expert 
+
+

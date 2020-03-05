@@ -1,0 +1,19 @@
+Selenium Advanced 
+
+Coverage -
+TestNg
+Frameworks
+Types of framework
+Datadriven testing
+Database validation
+
+POM
+Handling cookies
+exception handling
+
+integration tools
+- cucumber
+-maven
+-jenkins
+
+

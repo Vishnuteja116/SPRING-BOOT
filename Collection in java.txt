@@ -1,0 +1,112 @@
+Collections
+
+-It is from Java 1.4
+-It is called group of objects
+-Java util package (import java.util)--> 
+java utilities--> collection of API
+-Collections (core collections interfaces)
+ 1.Set
+ 2.List
+ 3.Queue
+
+-Map ( it doesnt belong to collections but it has an impact on collections)
+
+Set(interface)
+-HashSet (class)
+-LinkedHashSet (Class)
+-SortedSet(Interface)---> TreeSet (Class)
+
+
+List(interface)
+-ArrayList (class)
+-LinkedList (class)
+
+Queue(interface)
+-PriorityQueue (class)
+
+
+
+Map - in the form of key and value pair <k,V> 
+    - add element - put()
+    - get element - get()
+             -only keys to be printed  - Keyset()
+             -only values to be printed - Values()
+             - keys & values to be printed - entrySet()
+-HashMap(class)
+-LinkedhashMap(class)
+-SortedMap(Interface)--> TreeMap(Class)
+-Hashtable(class)
+
+Set - doesnt allow duplicate -> permits single null value-->unordered collections
+
+List - allows duplicate ->permits multiple null value-->ordered collections
+
+SortedSet- elements are sorted (either ASC or DESC)
+TreeSet  - elements sorted in ASC ordering 
+
+hashSet- Performance wise it is slow
+LinkedhashSet- Performance wise it more faster
+
+
+Arraylist-default size of arraylist=10
+         -random processing
+         -elements are stored in a consquective element locations 
+         -one after other
+
+Linkedlist-elements are stored in seperate path
+          -sequential processing 
+
+SortedMap-elements arranged in (ASC or DESC)
+ TreeMap- elements arranged in ASC
+
+HashMap-Performance wise it is slow
+LinkedhashMap- Performance wise it more faster
+
+HashMap-not syncronsed ,not thread safe
+HashTable-Syncronsed, thread safe
+
+Iterator (interface)-Scanning the collection in forward direction
+                    -accessing only one elements 
+                    -Traversing or visting 
+-Iterator()-iterator
+-hasNext() -boolean
+-next()    -object
+-remove()  -void
+
+ListIterator (iterface) - Scanning the collection in both forward & backward directions 
+
+-ListIterator()-iterator
+-hasPrevious() - boolean
+-previous()-object
+-hasnext()-boolean
+-next()-object
+
+Enumeration (interface) - accesiing more elements at a time 
+                        -remove is not there 
+-hasmoreelement()- boolean
+-nextelement()-object
+
+
+legacy classes
+-Stack  - LIFO - top most see --> peek 
+        - push (add) and pull(remove) method 
+-Vector -growable or dynamic array thread safe , syncronised 
+-Queue -FIFO - top most see --> peek 
+        -offer (add) and poll (remove)method
+
+
+       
+
+
+
+
+
+
+
+
+
+
+
+
+
+

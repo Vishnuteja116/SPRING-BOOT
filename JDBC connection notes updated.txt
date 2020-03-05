@@ -1,0 +1,133 @@
+Java Database Connectivity
+
+CRUD
+
+
+
+
+Employee.java ----> Driver (thin driver)-->ojdbc14.jar--->DB-->Employee table
+
+Types of Drivers-
+1.JDBC - ODBC bridge driver- (Type -I)-Bridge driver (platform dependant)
+2.Partialy Native API- (Type -II)-Thick driver  (platform dependant)
+3.JDBC Pure Java driver -(Type -III)-Middleware driver(platform dependant)
+4.Native Protocol Pure Java driver-(Type -IV)-Thin driver (platform independant)-useful for web based appln
+
+Driver manager-the DriverManager class loads and configures a database driver on the database
+
+
+Types of statements-
+1.statement
+2.Prepared statement
+3.Callable statement
+
+
+Packages
+1.import java sql;
+2.import javax sql;
+
+Classes 
+
+1.class - java lang package
+2.driver -java sql
+
+Interfaces
+1.Connection -The Connection class performs confectioning and authentication to a database 
+2.Statement
+3.Prepared Statement
+-The Statement and PreparedStatement classes send SQL statements to the database engine for preprocessing and eventually execution
+
+4.Callable statement -Execute a call to a database stored procedure
+5.Result Set -the ResultSet class allows for the inspection of results from executions
+   -The simple meaning of metadata is data about data. 
+There are two metadata available in the JDBC API – 
+ResultSetMetaData  -information about ResultSet object, like; number of columns, name of columns and datatype of columns.
+
+DatabaseMetaData -It contains the information about Database Management System (DBMS) and all the objects in the database, like; all the tables, cataloge name, view, stored procedure etc. 
+
+
+
+8.DataSource  -used in creating and managing the connections in the database
+
+Methods
+1.createStatement()- statement
+2.getConnection()  - Connection
+3.executeStatement()-statement
+4.Preparestatement()- PreparedStatement
+5.PrepareCall()     -CallableStatement
+
+execute       ([SQL statement create,alter,drop]) -boolean
+executeUpdate ([DML insert,delete,modify])        -int
+executeQuery  ([SQL , Select])                    -ResultSet
+next()                                            -object
+
+JARS
+ojdbc14.jar  (oracle DB connectivity)
+mysql.connector (mysql DB connectivity)
+
+SQL exceptions
+
+classnotfound exceptions - 
+SQL  exceptions - 
+
+
+JDBC API
+1.load the driver class
+
+
+class.forName("oracle.jdbc.driver.OracleDriver")
+
+class.forName("com.mysql.jdbc.Driver")
+
+oracle & com -package name
+mysql.jdbc & jdbc.driver - sub package name
+OracleDriver   - driver classname
+
+
+2. Connection con = DriverManager.getConnection("jdbc:oracle://thin:@Oracle2:1521 XE",training1,syntel123")	
+
+Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/empdb","root","root");
+
+3.Statement st=con.createStatement();
+
+4.ResultSet rs=st.executeQuery("select * from emp");
+
+5.while(rs.next())
+		{
+			int no=rs.getInt(1);
+			String name=rs.getString(2);
+			System.out.println(no+" "+name);			
+		}
+
+6.Con.close();
+
+Steps-
+
+1. Select Window ---> open perspective --> Database development
+
+2.Right click--> new --> select the collection profile
+
+3.Oracle
+
+4.oracle thin driver --> 11
+
+5.jar list
+
+6.provide properties
+
+7.ok button
+
+8.create a java project --> create a class
+
+9.write the program
+
+10.in build path add the jar file
+
+11.execute
+
+12.sql scrap book execute select 
+
+
+
+
+	
